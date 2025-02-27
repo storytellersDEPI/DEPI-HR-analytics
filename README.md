@@ -73,11 +73,11 @@ HR-Dataset-Analysis/
 ## Usage
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/HR-Dataset-Analysis.git
+   https://github.com/storytellersDEPI/DEPI-HR-analytics.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd HR-Dataset-Analysis
+   cd DEPI-HR-analytics
    ```
 3. Open Jupyter Notebook and run the preprocessing scripts:
    ```bash
