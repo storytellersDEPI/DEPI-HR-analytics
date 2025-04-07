@@ -46,7 +46,21 @@
             .plot-container {
                 height: 300px;
             }
+        .github-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
+        @media (max-width: 768px) {
+            .github-btn {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 15px;
+            }
+        }
+        }
+        
     </style>
 </head>
 <body>
@@ -54,8 +68,15 @@
         <!-- Header -->
         <div class="row mb-4 mt-4">
             <div class="col-12">
-                <h1 class="display-4 text-primary">HR Attrition Analysis Dashboard</h1>
-                <p class="lead">Interactive dashboard for analyzing employee attrition patterns and factors</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h1 class="display-4 text-primary">HR Attrition Analysis Dashboard</h1>
+                        <p class="lead">Interactive dashboard for analyzing employee attrition patterns and factors</p>
+                    </div>
+                    <a href="https://github.com/yourusername/your-repo-name" target="_blank" class="btn btn-dark github-btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
             </div>
         </div>
 
