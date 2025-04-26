@@ -115,49 +115,39 @@ Table.AddColumn(#"Changed Type",
     Table.RenameColumns(#"Removed Old Column",
     {{"Updated_Department", "Department"}}).
 ```
-## Rename column (Education) to (EducationLevelID) and change type to text.
+3. Rename column (Education) to (EducationLevelID) and change type to text.
 
 ![Image 10](media/image10.png)
 
-Add new conditional column (Education Level) using the attributes from table (EducationLevel) and change type to text.
+4. Add new conditional column (Education Level) using the attributes from table (EducationLevel) and change type to text.
 
-Change Values of Column (Ethnicity):
+5. Change Values of Column (Ethnicity):
 
-Asian or Asian American → Asian/Asian American
-
-Black or African American → Black/African American
-
-Native Hawaiian → Hawaiian
-
-Mixed or multiple ethnic groups → Mixed-ethnic groups
-
-American Indian or Alaska Native → American Indian/Alaska
+   - Asian or Asian American → Asian/Asian American
+   - Black or African American → Black/African American
+   - Native Hawaiian → Hawaiian
+   - Mixed or multiple ethnic groups → Mixed-ethnic groups
+   - American Indian or Alaska Native → American Indian/Alaska
 
 ![Image 11](media/image11.png)
 
-Add new conditional column (Age Category) and change type to text.
+6. Add new conditional column (Age Category) and change type to text.
 
-Replace values in column (Attrition) as follows:
+7. Replace values in column (Attrition) as follows:
 
-Yes → Departed
+   - Yes → Departed
+   - No → Active
 
-No → Active
+8. Rename columns to enhance visibility.
 
-Rename columns to enhance visibility.
+9. In Table view:
+   - Modify column (Salary) format to currency.
+   - Sort the column (EducationLevel) by the column (EducationLevelID).
 
-In Table view:
-
-Modify column (Salary) format to currency
-
-Sort the column (EducationLevel) by the column (EducationLevelID).
-
-In Model View:
-Dividing the table into 2 folders:
-
-(Personal) which includes all personal columns for each employee.
-
-(Professional) which includes all work columns for each employee.
-
+10. In Model View:
+    - Divide the table into 2 folders:
+      - **Personal**: Includes all personal columns for each employee.
+      - **Professional**: Includes all work columns for each employee.
 Table: Education Level
 Delete Table.
 
