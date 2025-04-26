@@ -119,6 +119,7 @@ Table.AddColumn(#"Changed Type",
 
 
 4. Add new conditional column (Education Level) using the attributes from table (EducationLevel) and change type to text.
+
 ![Image 11](media/image11.png)
 5. Change Values of Column (Ethnicity):
 
@@ -131,6 +132,7 @@ Table.AddColumn(#"Changed Type",
 
 
 6. Add new conditional column (Age Category) and change type to text.
+![Image 12](media/image12.png)
 
 7. Replace values in column (Attrition) as follows:
 
@@ -172,4 +174,4 @@ Delete Table.
 | Model_Relationships                    | INFO.VIEW.RELATIONSHIPS()                                     |                                                | FALSE    | FALSE     |
 | Model_Tables                           | INFO.VIEW.TABLES()                                            |                                                | FALSE    | FALSE     |
 
-![Image 12](media/image12.png)
+
