@@ -269,3 +269,17 @@ Additionally, detailed tables of components (Tables, Columns, Relationships, Mea
 |||
 |17|--Validate YearsWithCurrManager (not exceed YearsAtCompany) <br>DELETE FROM fact\_Employee<br>WHERE YearsWithCurrManager > YearsAtCompany;|
 
+...
+
+---
+
+## **Our Team**
+
+![Team Logo](media/image8.png)
+
+- **Mohamed Sobhy Mohamed Ali**
+- **Mahmoud Ashraf Ibrahim El-Fouly**
+- **Maryam Sami Abdel Basset Abdel Radi**
+- **Naira Ayman Shafik Abou El Saud**
+- **Hossam Mohamed Kamal Moro**
+- **Shaimaa Sabry El-Qotb Ghoneim**
