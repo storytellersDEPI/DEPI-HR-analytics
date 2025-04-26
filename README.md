@@ -117,10 +117,9 @@ Table.AddColumn(#"Changed Type",
 ```
 3. Rename column (Education) to (EducationLevelID) and change type to text.
 
-![Image 10](media/image10.png)
 
 4. Add new conditional column (Education Level) using the attributes from table (EducationLevel) and change type to text.
-
+![Image 11](media/image11.png)
 5. Change Values of Column (Ethnicity):
 
    - Asian or Asian American → Asian/Asian American
@@ -129,7 +128,7 @@ Table.AddColumn(#"Changed Type",
    - Mixed or multiple ethnic groups → Mixed-ethnic groups
    - American Indian or Alaska Native → American Indian/Alaska
 
-![Image 11](media/image11.png)
+
 
 6. Add new conditional column (Age Category) and change type to text.
 
