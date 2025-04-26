@@ -226,3 +226,46 @@ Avg_Salary_Departed = CALCULATE(AVERAGE(Employee[Salary]), Employee[Attrition] =
 
 Avg_Salary_Active = CALCULATE(AVERAGE(Employee[Salary]), Employee[Attrition] = "Active")
 ```
+**SQL codes**
+
+
+||Cleaning fact\_Employee Table |
+| :- | :- |
+|01|--Remove duplicate employees <br>DELETE FROM fact\_Employee<br>WHERE EmployeeID IN (<br>`    `SELECT EmployeeID FROM fact\_Employee<br>`    `GROUP BY EmployeeID<br>`    `HAVING COUNT(\*) > 1);|
+|||
+|02|--Remove employees with missing value in the main coulmns <br>DELETE FROM fact\_Employee<br>WHERE EmployeeID IS NULL<br>`   `OR FirstName IS NULL<br>`   `OR LastName IS NULL<br>`   `OR Gender IS NULL<br>`   `OR Age IS NULL<br>`   `OR Department IS NULL<br>`   `OR Salary IS NULL;|
+|||
+|03|--Remove invalid salary values <br>DELETE FROM fact\_Employee<br>WHERE Salary <= 0;|
+|||
+|04|--Remove employees with unrealistic ages <br>DELETE FROM fact\_Employee<br>WHERE Age < 18 OR Age > 70;|
+|||
+|05|--Change the department of employee id(9758-DE2F) from Technology into Sales<br>UPDATE fact\_Employee<br>SET Department = 'Sales'<br>WHERE EmployeeID = '9758-DE2F';|
+|||
+|06|--Cleaning Dim\_SatisfiedLevel Table  <br>DELETE FROM Dim\_SatisfiedLevel<br>WHERE SatisfactionLevel IS NULL<br>`   `OR SatisfactionID NOT IN (1, 2, 3, 4, 5);|
+
+
+||Ensuring Referential Integrity|
+| :- | :- |
+|07|--Remove employees with invalid education levels  <br>DELETE FROM fact\_Employee<br>WHERE EducationLevelID NOT IN (SELECT EducationLevelID FROM Dim\_EducationLevel);|
+|||
+|08|--Remove performance ratings for non-existent employees  <br>DELETE FROM fact\_PerformanceRating<br>WHERE EmployeeID NOT IN (SELECT EmployeeID FROM fact\_Employee);|
+|||
+|09|--Normalize OverTime Values  <br>UPDATE fact\_Employee<br>SET OverTime = 'Yes'<br>WHERE OverTime ILIKE 'yes' OR OverTime ILIKE 'y' OR OverTime ILIKE 'true' OR OverTime = '1';<br><br>UPDATE fact\_Employee<br>SET OverTime = 'No'<br>WHERE OverTime ILIKE 'no' OR OverTime ILIKE 'n' OR OverTime ILIKE 'false' OR OverTime = '0';|
+|||
+|10|--Normalize Attrition Values  <br>UPDATE fact\_Employee<br>SET Attrition = 'Departed'<br>WHERE Attrition ILIKE 'yes' OR Attrition ILIKE 'y' OR Attrition ILIKE 'true' OR Attrition = '1';<br><br>UPDATE fact\_Employee<br>SET Attrition = 'Active'<br>WHERE Attrition ILIKE 'no' OR Attrition ILIKE 'n' OR Attrition ILIKE 'false' OR Attrition = '0';|
+|||
+|11|--Normalize Gender Values  <br>UPDATE fact\_Employee<br>SET Gender = 'Male'<br>WHERE Gender ILIKE 'm' OR Gender ILIKE 'male';<br><br>UPDATE fact\_Employee<br>SET Gender = 'Female'<br>WHERE Gender ILIKE 'f' OR Gender ILIKE 'female';|
+|||
+|12|--Normalize MaritalStatus Values  <br>UPDATE fact\_Employee<br>SET MaritalStatus = 'Single'<br>WHERE MaritalStatus ILIKE 'single';<br><br>UPDATE fact\_Employee<br>SET MaritalStatus = 'Married'<br>WHERE MaritalStatus ILIKE 'married';<br><br>UPDATE fact\_Employee<br>SET MaritalStatus = 'Divorced'<br>WHERE MaritalStatus ILIKE 'divorced';|
+|||
+||Validating Numeric Ranges|
+|13|--Validate Salary Range  <br>DELETE FROM fact\_Employee<br>WHERE Salary < 10000 OR Salary > 600000;|
+|||
+|14|--Validate YearsAtCompany  <br>DELETE FROM fact\_Employee<br>WHERE YearsAtCompany < 0 OR YearsAtCompany > 50;|
+|||
+|15|--Validate YearsInMostRecentRole (not exceed YearsAtCompany)  <br>DELETE FROM fact\_Employee<br>WHERE YearsInMostRecentRole > YearsAtCompany;|
+|||
+|16|--Validate YearsSinceLastPromotion (not exceed YearsAtCompany)  <br>DELETE FROM fact\_Employee<br>WHERE YearsSinceLastPromotion > YearsAtCompany;|
+|||
+|17|--Validate YearsWithCurrManager (not exceed YearsAtCompany) <br>DELETE FROM fact\_Employee<br>WHERE YearsWithCurrManager > YearsAtCompany;|
+
