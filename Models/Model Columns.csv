@@ -1,0 +1,142 @@
+﻿Name,Table,Type,DataCategory,DataType,DisplayFolder,Expression,IsHidden,IsKey,IsNullable,IsUnique,LineageTag,SortByColumn,SourceColumn
+Day,LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3,Calculated,DayOfMonth,Integer,,DAY([Date]),true,false,true,false,caedbc80-887e-4fdd-b59f-9c7d49cd1528,,
+Day,LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a,Calculated,DayOfMonth,Integer,,DAY([Date]),true,false,true,false,e2dd15d9-c152-4c34-849f-cfc90dd6a731,,
+Day,DateTableTemplate_4439d23f-be47-4c76-af94-b88c07a4e1c1,Calculated,DayOfMonth,Integer,,DAY([Date]),true,false,true,false,f6824f4f-927f-4f46-9d0a-9254dd4567d9,,
+MonthNo,LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a,Calculated,MonthOfYear,Integer,,MONTH([Date]),true,false,true,false,43711b45-5b8e-46e0-9056-9e1429cf950d,,
+MonthNo,DateTableTemplate_4439d23f-be47-4c76-af94-b88c07a4e1c1,Calculated,MonthOfYear,Integer,,MONTH([Date]),true,false,true,false,5d70cc24-690a-4e3a-ad48-45f8f4ddc47c,,
+MonthNo,LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3,Calculated,MonthOfYear,Integer,,MONTH([Date]),true,false,true,false,87f0953f-9cd0-4822-8f5e-fdd31ae454f7,,
+Month,LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3,Calculated,Months,Text,,"FORMAT([Date], ""MMMM"")",true,false,true,false,0169252d-7e2d-495c-a40f-6fd5263d75bb,MonthNo,
+Month,LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a,Calculated,Months,Text,,"FORMAT([Date], ""MMMM"")",true,false,true,false,3fa58864-e2ed-4a34-bab8-a5884c6c7938,MonthNo,
+Month,DateTableTemplate_4439d23f-be47-4c76-af94-b88c07a4e1c1,Calculated,Months,Text,,"FORMAT([Date], ""MMMM"")",true,false,true,false,56572c49-bfe8-47e0-98df-0cbcbdfc06ae,MonthNo,
+Date,LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3,CalculatedTableColumn,PaddedDateTableDates,Date,,,true,false,false,true,12d5fc5d-0f1d-4326-9c11-09ffeb50ccf5,,Date
+Date,LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a,CalculatedTableColumn,PaddedDateTableDates,Date,,,true,false,false,true,1f95e9d1-6bb2-4786-8686-e825b611a8e0,,Date
+Date,DateTableTemplate_4439d23f-be47-4c76-af94-b88c07a4e1c1,CalculatedTableColumn,PaddedDateTableDates,Date,,,true,false,true,false,08232930-9bd0-40a5-bfd6-1800b90f037c,,Date
+QuarterNo,LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3,Calculated,QuarterOfYear,Integer,,INT(([MonthNo] + 2) / 3),true,false,true,false,8a7d7584-a2a1-4691-a123-39dcc7ce5b9f,,
+QuarterNo,LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a,Calculated,QuarterOfYear,Integer,,INT(([MonthNo] + 2) / 3),true,false,true,false,a561873d-ed51-43f0-a253-55f0e464f556,,
+QuarterNo,DateTableTemplate_4439d23f-be47-4c76-af94-b88c07a4e1c1,Calculated,QuarterOfYear,Integer,,INT(([MonthNo] + 2) / 3),true,false,true,false,eda1a301-f801-4c98-8270-ffe8101e1723,,
+Quarter,DateTableTemplate_4439d23f-be47-4c76-af94-b88c07a4e1c1,Calculated,Quarters,Text,,"""Qtr "" & [QuarterNo]",true,false,true,false,714c8203-064b-4876-8155-24b3c4e6ffca,QuarterNo,
+Quarter,LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a,Calculated,Quarters,Text,,"""Qtr "" & [QuarterNo]",true,false,true,false,8218dbf6-9030-445f-a99b-fea381d4c65f,QuarterNo,
+Quarter,LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3,Calculated,Quarters,Text,,"""Qtr "" & [QuarterNo]",true,false,true,false,f9a12c4d-a071-47f5-9d96-2f62f75433b7,QuarterNo,
+Date,_dim_Date,Data,Regular,Date,,,false,false,false,true,e8ab1a0d-86a0-431a-a43b-89af245a571b,,Date
+Review Date,Survey,Data,Regular,Date,,,false,false,true,false,9739f9d5-0d17-478e-9307-fb587bf59e61,,Review Date
+Hire Date,Employee,Data,Regular,Date,Professional,,false,false,true,false,abb7f15e-777a-4cce-8c3e-e819aeab50d3,,Hire Date
+Question ID,Questions,Data,Regular,Integer,,,false,false,false,true,2b894338-9b0e-49cb-b82f-6b78ac8bcecb,,Question ID
+Question ID,Survey,Data,Regular,Integer,,,false,false,true,false,0392a23e-5776-432a-8324-50c0b50d37a5,,Question ID
+KPIID,Model_Measures,CalculatedTableColumn,Regular,Integer,,,false,false,true,false,1dd2f952-7edb-4f56-bf6d-d38d4f3250a0,,KPIID
+Answer,Survey,Data,Regular,Integer,,,false,false,true,false,38cf49e9-627d-44ab-bf53-c37bbd71ec89,,Answer
+Week Number,_dim_Date,Data,Regular,Integer,,,false,false,true,false,4af4e299-c8ea-44ee-9afd-52e8ce03e4ab,,Week Number
+ID,Model_Relationships,CalculatedTableColumn,Regular,Integer,,,false,false,true,false,4cd49cb4-a810-44eb-b375-b9d42fab4c4a,,ID
+CalculationGroupPrecedence,Model_Tables,CalculatedTableColumn,Regular,Integer,,,false,false,true,false,51d08591-199d-4650-8ece-6609b00d2e89,,CalculationGroupPrecedence
+ID,Model_Columns,CalculatedTableColumn,Regular,Integer,,,false,false,true,false,5f5b0406-c430-45b6-ba02-abef34c75c0e,,ID
+Month Number,_dim_Date,Data,Regular,Integer,,,false,false,true,false,7436bec8-5feb-4de6-9902-7016dbc37656,,Month Number
+Year,_dim_Date,Data,Regular,Integer,,,false,false,true,false,b458ef55-dc91-4028-bedb-619797cd35a9,,Year
+ID,Model_Measures,CalculatedTableColumn,Regular,Integer,,,false,false,true,false,c75b1354-1d05-482c-a0f8-07940e06b67e,,ID
+ID,Model_Tables,CalculatedTableColumn,Regular,Integer,,,false,false,true,false,f1e8a5c3-0304-410c-911d-1f093ae0b95d,,ID
+Age,Employee,Data,Regular,Integer,Personal,,false,false,true,false,93f53e45-8ac6-4453-8df5-f859cd9ee7ff,,Age
+YearsAtCompany,Employee,Data,Regular,Integer,Professional,,false,false,true,false,1445b00e-c575-4c96-ad16-916aba68d3d8,,YearsAtCompany
+YearsInMostRecentRole,Employee,Data,Regular,Integer,Professional,,false,false,true,false,21f7129f-31d2-460e-805a-82416e076171,,YearsInMostRecentRole
+YearsWithCurrManager,Employee,Data,Regular,Integer,Professional,,false,false,true,false,2282b775-6c5d-46ce-b7d9-629630ab9159,,YearsWithCurrManager
+YearsSinceLastPromotion,Employee,Data,Regular,Integer,Professional,,false,false,true,false,4527645c-3352-4738-96a7-22b11cade204,,YearsSinceLastPromotion
+Stock Option Level,Employee,Data,Regular,Integer,Professional,,false,false,true,false,6cab31c4-08dc-42cf-a33b-d2fbac4a0ade,,Stock Option Level
+Salary,Employee,Data,Regular,Integer,Professional,,false,false,true,false,81c1d498-9f9c-4d4a-9c9f-07b5c68f712d,,Salary
+Distance From Home,Employee,Data,Regular,Integer,Professional,,false,false,true,false,fd95707c-0ee6-4f2b-a325-e3e0a5fcd30f,,Distance From Home
+State,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,01b6ffd9-6a84-46e8-b8f1-0cc4eab677f6,,State
+Expression,Model_Tables,CalculatedTableColumn,Regular,Text,,,false,false,true,false,0455ea80-7761-4f30-9ccc-12eec35d62c2,,Expression
+FromTable,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,0ec35763-a639-498b-81a4-89fe4247ceea,,FromTable
+Expression,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,0f703e9e-e782-4b6e-a92f-0c689cee75a7,,Expression
+ToTable,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,0ff1a3fa-74f7-417e-82fc-8c32104e5abf,,ToTable
+Name,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,138a33cb-2a20-4829-ad41-1e2e2c76af36,,Name
+Description,Model_Tables,CalculatedTableColumn,Regular,Text,,,false,false,true,false,17e7cadd-6941-4023-aa58-7c4220fd2afa,,Description
+Question,Questions,Data,Regular,Text,,,false,false,true,false,19477b87-c01b-44fd-8319-d5953623a967,Question ID,Question
+ToCardinality,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,1ce0cc5b-77f7-4e8c-9b37-eb01b1807cf8,,ToCardinality
+FormatString,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,203ab4f9-0708-428c-b018-ced6630b531e,,FormatString
+Model,Model_Tables,CalculatedTableColumn,Regular,Text,,,false,false,true,false,25aaef54-7a0b-4cee-8538-a0acf570711d,,Model
+FromCardinality,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,26b2512b-81ef-41cd-b0bc-adea6827ba2a,,FromCardinality
+Quarter,_dim_Date,Data,Regular,Text,,,false,false,true,false,273ac2cd-f4cc-4f5e-a87c-58b3804723a0,,Quarter
+Survey ID,Survey,Data,Regular,Text,,,false,false,true,false,2d07d6c0-1b8c-4a62-a99e-811b48ec4a4b,,Survey ID
+DetailRowsDefinition,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,3809a1d8-0222-4093-84ca-257fd592d401,,DetailRowsDefinition
+Table,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,3b808005-8fa7-4bee-9b88-1328969816f6,,Table
+Description,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,3c4d67ce-6c05-40e4-89b4-4fde33523704,,Description
+DataType,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,41957cd9-814d-4e07-8da4-7c73176ca5e9,,DataType
+Description,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,4350f271-dfe0-46f1-ac72-c7f92176eaeb,,Description
+Name,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,44751514-d635-4f53-b5f7-8f34e6f26147,,Name
+Employee ID,Survey,Data,Regular,Text,,,false,false,true,false,5779a923-fbab-4600-9214-94d55318e718,,Employee ID
+Day of Week,_dim_Date,Data,Regular,Text,,,false,false,true,false,59080b6b-e52e-4cf4-aa44-5dc4cea9ce12,,Day of Week
+TableStorage,Model_Tables,CalculatedTableColumn,Regular,Text,,,false,false,true,false,60f5fa07-996e-406d-b4b1-81dbf20162a3,,TableStorage
+DataType,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,63743c65-b66f-488b-babd-4f2138b900eb,,DataType
+Model,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,63febbe0-90af-49f0-97b3-62d158f3ca68,,Model
+Name,Model_Tables,CalculatedTableColumn,Regular,Text,,,false,false,true,false,6629a120-db3e-49d1-a925-67db18a1fd83,,Name
+AlternateOf,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,674acdbb-ee1c-4277-9c95-7e35458ae3f7,,AlternateOf
+Month,_dim_Date,Data,Regular,Text,,,false,false,true,false,68b20447-56c8-4645-b6ca-49f10ef61962,,Month
+SecurityFilteringBehavior,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,712ee355-477f-4ee7-ac52-3de613a9e9f2,,SecurityFilteringBehavior
+LineageTag,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,78352201-7440-4280-ab1c-6132f0e98b09,,LineageTag
+DataCategory,Model_Tables,CalculatedTableColumn,Regular,Text,,,false,false,true,false,8da0609e-e654-4154-aab1-704585323761,,DataCategory
+GroupingBehavior,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,91cbbe98-c22b-468d-b1a1-170a4d3bc5ac,,GroupingBehavior
+SummarizeBy,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,93c3a68f-d80d-45f7-aff6-b636860a27c5,,SummarizeBy
+Type,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,942efcfa-7fc9-4e99-9e4d-14cdbd88a8ca,,Type
+SourceColumn,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,9701a6b3-369d-4c33-a070-c30bd0fab217,,SourceColumn
+FormatString,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,971ec9d4-c521-411c-a9b0-ffbeeee712fe,,FormatString
+Relationship,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,9b371ff6-e650-4add-a759-9a1e9d513412,,Relationship
+Table,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,9b6787a7-7953-44a1-850f-d663f815acef,,Table
+Expression,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,9fe62f3e-da1c-48a6-aec6-8f97ae5910c5,,Expression
+ToColumn,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,a8a35c36-872f-40f3-af6c-e9b01ebb6279,,ToColumn
+ColumnStorage,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,afd5a84c-5ef8-4a86-a7e1-affcc9bbedff,,ColumnStorage
+FormatStringDefinition,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,b37e9f9c-e610-4b1a-b3ec-84e5510c3104,,FormatStringDefinition
+FromColumn,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,bd4a467e-b139-4813-a32a-cdfd3406e492,,FromColumn
+CrossFilteringBehavior,Model_Relationships,CalculatedTableColumn,Regular,Text,,,false,false,true,false,c024b919-27ce-4d5c-a774-80077361d317,,CrossFilteringBehavior
+DataCategory,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,c50905c9-d589-4df2-b5e5-8f17233483d6,,DataCategory
+Name,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,c7f77c82-8955-4e17-ab66-63160d6504b9,,Name
+DisplayFolder,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,cc006357-9e67-4927-b383-ab3639418630,,DisplayFolder
+SortByColumn,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,ce6dfb0d-0bda-4a9d-9169-42d1df3a1171,,SortByColumn
+LineageTag,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,de58c4b4-7bd4-4ad9-8979-63089a6de405,,LineageTag
+StorageMode,Model_Tables,CalculatedTableColumn,Regular,Text,,,false,false,true,false,e0f61e53-61de-46db-b841-3ce6d13aa03a,,StorageMode
+DataCategory,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,e3a8de03-3567-4f9a-a62c-43b0479ebed0,,DataCategory
+State,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,efac2f5c-eaa7-4bb7-8637-0212ec53960c,,State
+LineageTag,Model_Tables,CalculatedTableColumn,Regular,Text,,,false,false,true,false,f1f3e730-3ad4-4142-96c5-3cd9631b6046,,LineageTag
+Alignment,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,f480a489-649b-42c1-abce-0d9ebed07352,,Alignment
+SourceProviderType,Model_Columns,CalculatedTableColumn,Regular,Text,,,false,false,true,false,f639278a-c7fd-4709-9660-ae8e277cd06e,,SourceProviderType
+DisplayFolder,Model_Measures,CalculatedTableColumn,Regular,Text,,,false,false,true,false,fff1d4f0-aec6-4a5b-8856-d6de6c0e5425,,DisplayFolder
+EducationLevelID,Employee,Data,Regular,Text,Personal,,false,false,true,false,15c072d3-9da8-45a3-b64f-8202ff0c7f38,,EducationLevelID
+Education Level,Employee,Data,Regular,Text,Personal,,false,false,true,false,1d86c1f3-d868-470d-aeac-3c27cc8a56c7,EducationLevelID,Education Level
+Age Category,Employee,Data,Regular,Text,Personal,,false,false,true,false,4b061586-0624-48f4-9d36-06e6f6cecb2f,,Age Category
+Gender,Employee,Data,Regular,Text,Personal,,false,false,true,false,83f3eb95-0cce-4ae3-b389-fe6b292de7fc,,Gender
+Marital Status,Employee,Data,Regular,Text,Personal,,false,false,true,false,bb619415-277d-410f-964a-5adfae7e09e7,,Marital Status
+First Name,Employee,Data,Regular,Text,Personal,,false,false,true,false,ca95d544-ba96-4c5e-9c2e-8282889b06cb,,First Name
+Education Field,Employee,Data,Regular,Text,Personal,,false,false,true,false,cb093df5-2ed0-4c7f-b00c-e3b524d074d6,,Education Field
+Last Name,Employee,Data,Regular,Text,Personal,,false,false,true,false,ccd440cc-f865-471c-8cb9-6cf7e9b07610,,Last Name
+Ethnicity,Employee,Data,Regular,Text,Personal,,false,false,true,false,fe40ff1a-8806-452c-8779-70239e2e72d7,,Ethnicity
+Full_Name,Employee,Calculated,Regular,Text,Personal,"Employee[First Name] & "" "" & Employee[Last Name]",false,false,true,false,826c634e-a543-4d1b-bcb1-d0fc6d281900,,
+Employee ID,Employee,Data,Regular,Text,Professional,,false,false,false,true,b6683bd9-faf5-46ac-b0a0-34399f68a706,,Employee ID
+State,Employee,Data,Regular,Text,Professional,,false,false,true,false,5d9cf98d-883b-4ac9-9014-88261cfae69c,,State
+Department,Employee,Data,Regular,Text,Professional,,false,false,true,false,86c2cf76-a7fa-4535-b070-6c462a7cdbaf,,Department
+Job Role,Employee,Data,Regular,Text,Professional,,false,false,true,false,9e6d4bbb-a2ef-4e63-8c8c-327de74b0416,,Job Role
+Over Time,Employee,Data,Regular,Text,Professional,,false,false,true,false,cf68c0fb-4de3-43bf-80c7-00d34c675141,,Over Time
+Attrition,Employee,Data,Regular,Text,Professional,,false,false,true,false,dfc39b6a-9f3b-4be4-ba01-7b696c59062b,,Attrition
+Business Travel,Employee,Data,Regular,Text,Professional,,false,false,true,false,f73198b5-fe70-4a03-81de-6be2fc54cf19,,Business Travel
+IsHidden,Model_Tables,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,0c8166aa-e53b-4ed3-9f7f-be7c74f7ef42,,IsHidden
+IsKey,Model_Columns,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,18aab432-1856-47d9-9051-32db0bcacc63,,IsKey
+IsPrivate,Model_Tables,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,2fd210bf-8ae1-4c06-8789-ea49a7c7ada3,,IsPrivate
+IsHidden,Model_Columns,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,3c1a6e1d-9f70-49fd-b47f-50af220e139c,,IsHidden
+ShowAsVariationOnly,Model_Tables,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,6d0fc865-124d-454e-bf83-e1953ef57cd3,,ShowAsVariationOnly
+IsSimpleMeasure,Model_Measures,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,8270ebd7-ec04-4d21-8fd6-48a49191bf1b,,IsSimpleMeasure
+IsHidden,Model_Measures,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,ae14130d-5780-4a4e-867f-27c0f9209c9d,,IsHidden
+IsUnique,Model_Columns,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,aeed29ba-9ff9-496e-89b6-e14b3cad31ab,,IsUnique
+IsAvailableInMDX,Model_Columns,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,d2af40e3-0cd3-4d61-88b4-543a16fc1702,,IsAvailableInMDX
+RelyOnReferentialIntegrity,Model_Relationships,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,da64b519-0b21-456e-99a6-16eab4e02ba4,,RelyOnReferentialIntegrity
+IsActive,Model_Relationships,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,f62d3027-c96f-42eb-a18e-4af41d8d9725,,IsActive
+IsNullable,Model_Columns,CalculatedTableColumn,Regular,True/False,,,false,false,true,false,f95c590d-e29d-4240-9e75-fb8f2f54ddbb,,IsNullable
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,_dim_Date,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,_Measures,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,DateTableTemplate_4439d23f-be47-4c76-af94-b88c07a4e1c1,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,Employee,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,Model_Columns,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,Model_Measures,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,Model_Relationships,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,Model_Tables,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,Questions,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61,Survey,RowNumber,RowNumber,Integer,,,true,true,false,true,,,RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61
+Year,DateTableTemplate_4439d23f-be47-4c76-af94-b88c07a4e1c1,Calculated,Years,Integer,,YEAR([Date]),true,false,true,false,08aecda1-8988-4d25-b073-2a9fc21c1fef,,
+Year,LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3,Calculated,Years,Integer,,YEAR([Date]),true,false,true,false,2f632e55-ba4d-4596-a2fd-3b0aaf71f53a,,
+Year,LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a,Calculated,Years,Integer,,YEAR([Date]),true,false,true,false,fe2415cd-2470-4cc6-9b8f-12d1f9fbe261,,

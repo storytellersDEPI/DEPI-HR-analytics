@@ -1,0 +1,13 @@
+﻿Name,Description,Expression,Count of ID,IsHidden,IsPrivate,LineageTag,Model,ShowAsVariationOnly
+Employee,Table contains all the information about each employee in the the company,,1,false,false,3e2abc08-eaa7-4a5d-9aa3-fabd927ae137,a3613ea2-e00e-4939-b632-49249ccafa57,false
+Survey,Table contains all the surveys results of all the employees of all time,,1,false,false,a0ef13da-ad67-490b-a2d2-1d3e03484a2e,a3613ea2-e00e-4939-b632-49249ccafa57,false
+Questions,Table to store and code the questions of the employees' surveys,,1,false,false,e4edbf1a-6269-4734-9fcf-1b254ef1144a,a3613ea2-e00e-4939-b632-49249ccafa57,false
+_Measures,Table to store and organize DAX measures,,1,false,false,f6eba6e2-66a6-4ba2-936d-24f922f9c3b1,a3613ea2-e00e-4939-b632-49249ccafa57,false
+_dim_Date,"Time Table for the analysis period of time, to provide a centralized date reference that enhances time-based analysis",,1,false,false,ff6c99a7-19a0-45a5-85a4-9629d5ac9ab6,a3613ea2-e00e-4939-b632-49249ccafa57,false
+DateTableTemplate_4439d23f-be47-4c76-af94-b88c07a4e1c1,,"Calendar(Date(2015,1,1), Date(2015,1,1))",1,true,true,c63f5ef0-d60a-4f0f-b8fb-31505644928f,a3613ea2-e00e-4939-b632-49249ccafa57,false
+LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3,,"Calendar(Date(Year(MIN('_dim_Date'[Date])), 1, 1), Date(Year(MAX('_dim_Date'[Date])), 12, 31))",1,true,false,bd546d61-386a-4745-af24-c4a153077ff5,a3613ea2-e00e-4939-b632-49249ccafa57,true
+LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a,,"Calendar(Date(Year(MIN('Survey'[Review Date])), 1, 1), Date(Year(MAX('Survey'[Review Date])), 12, 31))",1,true,false,082a2d42-e8bb-455c-ad58-de3dbcd08a45,a3613ea2-e00e-4939-b632-49249ccafa57,true
+Model_Columns,,INFO.VIEW.COLUMNS(),1,false,false,141b5c2f-61ac-4e4e-93b6-cc3d9cec80c3,a3613ea2-e00e-4939-b632-49249ccafa57,false
+Model_Measures,,INFO.VIEW.MEASURES(),1,false,false,6b56a20c-c260-4671-a033-bf2614c92af1,a3613ea2-e00e-4939-b632-49249ccafa57,false
+Model_Relationships,,INFO.VIEW.RELATIONSHIPS(),1,false,false,63dafbc8-05f2-44b1-858d-51ce92b74b30,a3613ea2-e00e-4939-b632-49249ccafa57,false
+Model_Tables,,INFO.VIEW.TABLES(),1,false,false,adaa5cb8-942c-436e-afbd-b8d122c50555,a3613ea2-e00e-4939-b632-49249ccafa57,false

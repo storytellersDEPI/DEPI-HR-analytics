@@ -1,0 +1,19 @@
+﻿Name,Table,State,Description,IsHidden,IsSimpleMeasure
+Attrition%,_Measures,Valid,Retrieve the percentage of departed employees to the total,false,false
+Avg_Salary_Active,_Measures,Valid,Calculate the average salary of active employees,false,false
+Avg_Salary_Departed,_Measures,Valid,Calculate the average salary of departed employees,false,false
+Corr_Distance_Att,_Measures,Valid,Calculate the correlation coefficient between attrition behavior and the (distance between work and employee's home),false,false
+Corr_Manager_Att,_Measures,Valid,Calculate the correlation coefficient between attrition behavior and the (No. of years with current manager),false,false
+Corr_Promotion_Att,_Measures,Valid,Calculate the correlation coefficient between attrition behavior and the (No. of years since last promotion),false,false
+Corr_Role_Att,_Measures,Valid,Calculate the correlation coefficient between attrition behavior and the (job role),false,false
+Corr_Salary_Att,_Measures,Valid,Calculate the correlation coefficient between attrition behavior and the (salary),false,false
+Corr_Stock_Att,_Measures,Valid,Calculate the correlation coefficient between attrition behavior and the (stock option level),false,false
+Count_Dissatisfied,_Measures,Valid,"Retrieve the total number of ""dissatisfied"" answers in surveys",false,false
+Count_Neutral,_Measures,Valid,"Retrieve the total number of ""neutral"" answers in surveys",false,false
+Count_Satisfied,_Measures,Valid,"Retrieve the total number of ""satisfied"" answers in surveys",false,false
+Count_V_Dissatisfied,_Measures,Valid,"Retrieve the total number of ""very dissatisfied"" answers in surveys",false,false
+Count_V_Satisfied,_Measures,Valid,"Retrieve the total number of ""very satisfied"" answers in surveys",false,false
+Emp_Active,_Measures,Valid,Retrieve the total number of employees that still work at the company,false,false
+Emp_Departed,_Measures,Valid,Retrieve the total number of employees that left the company,false,false
+Emp_Hired,_Measures,Valid,Retrieve the total number of employees that have been hired,false,false
+Emp_Total,_Measures,Valid,Retrieve the total number of employees,false,false

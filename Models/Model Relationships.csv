@@ -1,0 +1,6 @@
+﻿IsActive,FromTable,ToTable,FromColumn,ToColumn,Relationship,SecurityFilteringBehavior,Name,Model
+true,Employee,_dim_Date,Hire Date,Date,'Employee'[Hire Date] *[<-]1 '_dim_Date'[Date],Single,e8c4f4a7-999d-4600-c6a8-bf354111ba5d,a3613ea2-e00e-4939-b632-49249ccafa57
+true,Survey,Employee,Employee ID,Employee ID,'Survey'[Employee ID] *[<-]1 'Employee'[Employee ID],Single,2ee1e728-f7f5-a280-6215-d87c3603d792,a3613ea2-e00e-4939-b632-49249ccafa57
+true,_dim_Date,LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3,Date,Date,'_dim_Date'[Date] *[<-]1 'LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3'[Date],Single,ffe2abe0-641e-45b9-a13b-c9e9fc1badae,a3613ea2-e00e-4939-b632-49249ccafa57
+true,Survey,LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a,Review Date,Date,'Survey'[Review Date] *[<-]1 'LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a'[Date],Single,044b3e04-cceb-4304-982a-346a1c6e8065,a3613ea2-e00e-4939-b632-49249ccafa57
+true,Survey,Questions,Question ID,Question ID,'Survey'[Question ID] *[<-]1 'Questions'[Question ID],Single,AutoDetected_6796ebfb-d8b8-4fff-bb46-bb1800285820,a3613ea2-e00e-4939-b632-49249ccafa57
