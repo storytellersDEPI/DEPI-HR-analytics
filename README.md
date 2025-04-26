@@ -164,7 +164,7 @@ Delete Table.
 ## The Data Model
 
 ### Schema
-![Image 12](media/image12.png)
+![Image 13](media/image13.png)
 
 ### Tables
 
@@ -183,4 +183,4 @@ Delete Table.
 | Model_Relationships                    | INFO.VIEW.RELATIONSHIPS()                                     |                                                | FALSE    | FALSE     |
 | Model_Tables                           | INFO.VIEW.TABLES()                                            |                                                | FALSE    | FALSE     |
 
-![Image 13](media/image13.png)
+![Image 12](media/image12.png)
