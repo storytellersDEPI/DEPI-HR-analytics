@@ -1,9 +1,7 @@
 # Egypt's digital pioneers' initiative  
 **"Final Project Documentation"**  
 
-![Image 1](media/image1.png) ![Image 2](media/image2.png)  
-
-![Image 5](media/image5.png) ![Image 6](media/image6.jpeg) ![Image 7](media/image7.png)  
+![Image 1](media/image1.png)
 
 ---
 
