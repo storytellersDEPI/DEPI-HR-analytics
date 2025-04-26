@@ -174,4 +174,55 @@ Delete Table.
 | Model_Relationships                    | INFO.VIEW.RELATIONSHIPS()                                     |                                                | FALSE    | FALSE     |
 | Model_Tables                           | INFO.VIEW.TABLES()                                            |                                                | FALSE    | FALSE     |
 
+![Warning Icon](media/image14.png)
 
+More detailed (.csv) files of the Model components are attached with this documentation.  
+Additionally, detailed tables of components (Tables, Columns, Relationships, Measures) are included as hidden pages in the Power BI project report file.
+
+## DAX Measures
+
+### Basic Employee Metrics
+
+```dax
+Full_Name = Employee[First Name] & " " & Employee[Last Name]
+
+Emp_Total = CALCULATE(DISTINCTCOUNT(Employee[Employee ID]))
+
+Emp_Active = CALCULATE([Emp_Total], Employee[Attrition] = "active")
+
+Emp_Departed = COALESCE(CALCULATE([Emp_Total], Employee[Attrition] = "Departed"), 0)
+
+Emp_Hired = [Emp_Active] + [Emp_Departed]
+
+Attrition% = [Emp_Departed]/([Emp_Departed]+[Emp_Active])
+```
+### Satisfaction Metrics
+```dax
+Count_V_Satisfied = CALCULATE(COUNTROWS(Survey), Survey[Answer] = 5, Survey[Question ID] IN {1, 2, 3, 4})
+
+Count_V_Dissatisfied = CALCULATE(COUNTROWS(Survey), Survey[Answer] = 1, Survey[Question ID] IN {1, 2, 3, 4})
+
+Count_Satisfied = CALCULATE(COUNTROWS(Survey), Survey[Answer] = 4, Survey[Question ID] IN {1, 2, 3, 4})
+
+Count_Neutral = CALCULATE(COUNTROWS(Survey), Survey[Answer] = 3, Survey[Question ID] IN {1, 2, 3, 4})
+
+Count_Dissatisfied = CALCULATE(COUNTROWS(Survey), Survey[Answer] = 2, Survey[Question ID] IN {1, 2, 3, 4})
+```
+### Correlation Measures
+```dax
+Corr_Stock_Att = 
+VAR __CORRELATION_TABLE = VALUES('Employee'[State])
+VAR __COUNT = COUNTX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE(AVERAGE('Employee'[Stock Option Level]) * [Emp_Departed]))
+VAR __SUM_X = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE(AVERAGE('Employee'[Stock Option Level])))
+VAR __SUM_Y = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE([Emp_Departed]))
+VAR __SUM_XY = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE(AVERAGE('Employee'[Stock Option Level]) * [Emp_Departed] * 1.))
+VAR __SUM_X2 = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE(AVERAGE('Employee'[Stock Option Level]) ^ 2))
+VAR __SUM_Y2 = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE([Emp_Departed] ^ 2))
+RETURN DIVIDE(__COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1., SQRT((__COUNT * __SUM_X2 - __SUM_X ^ 2) * (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)))
+```
+### Salary Metrics
+```dax
+Avg_Salary_Departed = CALCULATE(AVERAGE(Employee[Salary]), Employee[Attrition] = "Departed")
+
+Avg_Salary_Active = CALCULATE(AVERAGE(Employee[Salary]), Employee[Attrition] = "Active")
+```
