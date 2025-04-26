@@ -114,3 +114,45 @@ Table.AddColumn(#"Changed Type",
 #"Renamed Column" =
     Table.RenameColumns(#"Removed Old Column",
     {{"Updated_Department", "Department"}})
+Rename column (Education) to (EducationLevelID) and change type to text.
+
+![Image 10](media/image10.png)
+
+Add new conditional column (Education Level) using the attributes from table (EducationLevel) and change type to text.
+
+Change Values of Column (Ethnicity):
+
+Asian or Asian American → Asian/Asian American
+
+Black or African American → Black/African American
+
+Native Hawaiian → Hawaiian
+
+Mixed or multiple ethnic groups → Mixed-ethnic groups
+
+American Indian or Alaska Native → American Indian/Alaska
+
+![Image 11](media/image11.png)
+
+Add new conditional column (Age Category) and change type to text.
+
+Replace values in column (Attrition) as follows:
+
+Yes → Departed
+
+No → Active
+
+Rename columns to enhance visibility.
+
+In Table view:
+
+Modify column (Salary) format to currency
+
+Sort the column (EducationLevel) by the column (EducationLevelID).
+
+In Model View:
+Dividing the table into 2 folders:
+
+(Personal) which includes all personal columns for each employee.
+
+(Professional) which includes all work columns for each employee.
