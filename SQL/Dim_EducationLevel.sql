@@ -1,0 +1,6 @@
+INSERT INTO Dim_EducationLevel (EducationLevelID, EducationLevel) VALUES
+	('1', 'No Formal Qualifications'),
+	('2', 'High School '),
+	('3', 'Bachelors '),
+	('4', 'Masters '),
+	('5', 'Doctorate');
