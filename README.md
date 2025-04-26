@@ -114,7 +114,7 @@ Table.AddColumn(#"Changed Type",
 #"Renamed Column" =
     Table.RenameColumns(#"Removed Old Column",
     {{"Updated_Department", "Department"}}).
-```m
+```
 ## Rename column (Education) to (EducationLevelID) and change type to text.
 
 ![Image 10](media/image10.png)
