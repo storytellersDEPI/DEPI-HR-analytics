@@ -277,9 +277,8 @@ Additionally, detailed tables of components (Tables, Columns, Relationships, Mea
 
 ![Team Logo](media/image8.png)
 
+- **Hossam Mohamed Kamal Moro**
 - **Mohamed Sobhy Mohamed Ali**
-- **Mahmoud Ashraf Ibrahim El-Fouly**
 - **Maryam Sami Abdel Basset Abdel Radi**
 - **Naira Ayman Shafik Abou El Saud**
-- **Hossam Mohamed Kamal Moro**
 - **Shaimaa Sabry El-Qotb Ghoneim**
