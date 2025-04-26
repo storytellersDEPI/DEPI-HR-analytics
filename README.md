@@ -181,51 +181,51 @@ Additionally, detailed tables of components (Tables, Columns, Relationships, Mea
 
 ## DAX Measures
 
-### Basic Employee Metrics
+**DAX**
 
-```dax
-Full_Name = Employee[First Name] & " " & Employee[Last Name]
 
-Emp_Total = CALCULATE(DISTINCTCOUNT(Employee[Employee ID]))
+<table><tr><th colspan="2"><b>Name</b></th><th colspan="1"><b>Code & Description</b></th></tr>
+<tr><td colspan="1" rowspan="2" valign="top">01</td><td colspan="1" rowspan="2" valign="top">Full_Name</td><td colspan="1" valign="top">Retrieve the full name of the employee</td></tr>
+<tr><td colspan="1" valign="top">`    `Full_Name = Employee[First Name] & " " & Employee[Last Name]</td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">02</td><td colspan="1" rowspan="2" valign="top">Emp_Total</td><td colspan="1" valign="top">Retrieve the total number of employees</td></tr>
+<tr><td colspan="1" valign="top">`    `Emp_Total = CALCULATE(DISTINCTCOUNT(Employee[Employee ID]))</td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">03</td><td colspan="1" rowspan="2" valign="top">Emp_Active</td><td colspan="1" valign="top">Retrieve the total number of employees that still work at the company</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Emp_Active = CALCULATE(</p><p>`        `[Emp_Total],</p><p>`        `Employee[Attrition] = "active"</p><p>`    `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">04</td><td colspan="1" rowspan="2" valign="top">Emp_Departed</td><td colspan="1" valign="top">Retrieve the total number of employees that left the company</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Emp_Departed = COALESCE(</p><p>`        `CALCULATE(</p><p>`            `[Emp_Total],</p><p>`            `Employee[Attrition] = "Departed"</p><p>`        `),</p><p>`        `0</p><p>`    `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">05</td><td colspan="1" rowspan="2" valign="top">Emp_Hired</td><td colspan="1" valign="top">Retrieve the total number of employees that have been hired</td></tr>
+<tr><td colspan="1" valign="top">`    `Emp_Hired = [Emp_Active] + [Emp_Departed]</td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">06</td><td colspan="1" rowspan="2" valign="top">Attrition%</td><td colspan="1" valign="top">Retrieve the percentage of departed employees to the total</td></tr>
+<tr><td colspan="1" valign="top">`    `Attrition% = [Emp_Departed]/([Emp_Departed]+[Emp_Active])</td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">07</td><td colspan="1" rowspan="2" valign="top">Count_V_Satisfied</td><td colspan="1" valign="top">Retrieve the total number of "very satisfied" answers in surveys</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Count_V_Satisfied =</p><p>`    `CALCULATE(</p><p>`        `COUNTROWS(Survey),</p><p>`        `Survey[Answer] = 5,</p><p>`        `Survey[Question ID] IN {</p><p>`            `1,</p><p>`            `2,</p><p>`            `3,</p><p>`            `4</p><p>`        `}</p><p>`    `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">08</td><td colspan="1" rowspan="2" valign="top">Count_V_Dissatisfied</td><td colspan="1" valign="top">Retrieve the total number of "very dissatisfied" answers in surveys</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Count_V_Dissatisfied =</p><p>`    `CALCULATE(</p><p>`        `COUNTROWS(Survey),</p><p>`        `Survey[Answer] = 1,</p><p>`        `Survey[Question ID] IN {</p><p>`            `1,</p><p>`            `2,</p><p>`            `3,</p><p>`            `4</p><p>`        `}</p><p>`    `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">09</td><td colspan="1" rowspan="2" valign="top">Count_Satisfied</td><td colspan="1" valign="top">Retrieve the total number of "satisfied" answers in surveys</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Count_Satisfied =</p><p>`    `CALCULATE(</p><p>`        `COUNTROWS(Survey),</p><p>`        `Survey[Answer] = 4,</p><p>`        `Survey[Question ID] IN {</p><p>`            `1,</p><p>`            `2,</p><p>`            `3,</p><p>`            `4</p><p>`        `}</p><p>`    `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">10</td><td colspan="1" rowspan="2" valign="top">Count_Neutral</td><td colspan="1" valign="top">Retrieve the total number of "neutral" answers in surveys</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Count_Neutral =</p><p>`    `CALCULATE(</p><p>`        `COUNTROWS(Survey),</p><p>`        `Survey[Answer] = 3,</p><p>`        `Survey[Question ID] IN {</p><p>`            `1,</p><p>`            `2,</p><p>`            `3,</p><p>`            `4</p><p>`        `}</p><p>`    `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">11</td><td colspan="1" rowspan="2" valign="top">Count_Dissatisfied</td><td colspan="1" valign="top">Retrieve the total number of "dissatisfied" answers in surveys</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Count_Dissatisfied =</p><p>`    `CALCULATE(</p><p>`        `COUNTROWS(Survey),</p><p>`        `Survey[Answer] = 2,</p><p>`        `Survey[Question ID] IN {</p><p>`            `1,</p><p>`            `2,</p><p>`            `3,</p><p>`            `4</p><p>`        `}</p><p>`    `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">12</td><td colspan="1" rowspan="2" valign="top">Corr_Stock_Att</td><td colspan="1" valign="top">Calculate the correlation coefficient between attrition behavior and the (stock option level)</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Corr_Stock_Att =</p><p>`    `VAR __CORRELATION_TABLE = VALUES('Employee'[State])</p><p>`    `VAR __COUNT =</p><p>`    `COUNTX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Stock Option Level]) * [Emp_Departed])</p><p>`    `)</p><p>`    `VAR __SUM_X =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Stock Option Level]))</p><p>`    `)</p><p>`    `VAR __SUM_Y = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed])</p><p>`    `)</p><p>`    `VAR __SUM_XY =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Stock Option Level])</p><p>`        `* [Emp_Departed] * 1.</p><p>`        `)</p><p>`    `)</p><p>`    `VAR __SUM_X2 =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Stock Option Level]) ^ 2)</p><p>`    `)</p><p>`    `VAR __SUM_Y2 = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed] ^ 2)</p><p>`    `)</p><p>`    `RETURN</p><p>`        `DIVIDE(</p><p>`            `__COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1.,</p><p>`            `SQRT((__COUNT * __SUM_X2 - __SUM_X ^ 2)</p><p>`            `* (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)</p><p>`            `)</p><p>`        `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">13</td><td colspan="1" rowspan="2" valign="top">Corr_Salary_Att</td><td colspan="1" valign="top">Calculate the correlation coefficient between attrition behavior and the (salary)</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Corr_Salary_Att =</p><p>`    `VAR __CORRELATION_TABLE = VALUES('Employee'[State])</p><p>`    `VAR __COUNT =</p><p>`    `COUNTX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Salary]) * [Emp_Departed])</p><p>`    `)</p><p>`    `VAR __SUM_X =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Salary]))</p><p>`    `)</p><p>`    `VAR __SUM_Y = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed])</p><p>`    `)</p><p>`    `VAR __SUM_XY =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Salary]) * [Emp_Departed] * 1.)</p><p>`    `)</p><p>`    `VAR __SUM_X2 =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Salary]) ^ 2)</p><p>`    `)</p><p>`    `VAR __SUM_Y2 = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed] ^ 2)</p><p>`    `)</p><p>`    `RETURN</p><p>`        `DIVIDE(</p><p>`            `__COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1.,</p><p>`            `SQRT((__COUNT * __SUM_X2 - __SUM_X ^ 2)</p><p>`            `* (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)</p><p>`            `)</p><p>`        `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">14</td><td colspan="1" rowspan="2" valign="top">Corr_Role_Att</td><td colspan="1" valign="top">Calculate the correlation coefficient between attrition behavior and the (job role)</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Corr_Role_Att =</p><p>`    `VAR __CORRELATION_TABLE = VALUES('Employee'[State])</p><p>`    `VAR __COUNT =</p><p>`    `COUNTX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsInMostRecentRole])</p><p>`        `* [Emp_Departed]</p><p>`        `)</p><p>`    `)</p><p>`    `VAR __SUM_X =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsInMostRecentRole]))</p><p>`    `)</p><p>`    `VAR __SUM_Y = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed])</p><p>`    `)</p><p>`    `VAR __SUM_XY =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsInMostRecentRole])</p><p>`        `* [Emp_Departed] * 1.</p><p>`        `)</p><p>`    `)</p><p>`    `VAR __SUM_X2 =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsInMostRecentRole]) ^ 2)</p><p>`    `)</p><p>`    `VAR __SUM_Y2 = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed] ^ 2)</p><p>`    `)</p><p>`    `RETURN</p><p>`        `DIVIDE(</p><p>`            `__COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1.,</p><p>`            `SQRT((__COUNT * __SUM_X2 - __SUM_X ^ 2)</p><p>`            `* (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)</p><p>`            `)</p><p>`        `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">15</td><td colspan="1" rowspan="2" valign="top">Corr_Promotion_Att</td><td colspan="1" valign="top">Calculate the correlation coefficient between attrition behavior and the (No. of years since last promotion)</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Corr_Promotion_Att =</p><p>`    `VAR __CORRELATION_TABLE = VALUES('Employee'[State])</p><p>`    `VAR __COUNT =</p><p>`    `COUNTX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsSinceLastPromotion])</p><p>`        `* [Emp_Departed]</p><p>`        `)</p><p>`    `)</p><p>`    `VAR __SUM_X =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsSinceLastPromotion]))</p><p>`    `)</p><p>`    `VAR __SUM_Y = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed])</p><p>`    `)</p><p>`    `VAR __SUM_XY =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsSinceLastPromotion])</p><p>`        `* [Emp_Departed] * 1.</p><p>`        `)</p><p>`    `)</p><p>`    `VAR __SUM_X2 =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsSinceLastPromotion]) ^ 2)</p><p>`    `)</p><p>`    `VAR __SUM_Y2 = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed] ^ 2)</p><p>`    `)</p><p>`    `RETURN</p><p>`        `DIVIDE(</p><p>`            `__COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1.,</p><p>`            `SQRT((__COUNT * __SUM_X2 - __SUM_X ^ 2)</p><p>`            `* (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)</p><p>`            `)</p><p>`        `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">16</td><td colspan="1" rowspan="2" valign="top">Corr_Manager_Att</td><td colspan="1" valign="top">Calculate the correlation coefficient between attrition behavior and the (No. of years with current manager)</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Corr_Manager_Att =</p><p>`    `VAR __CORRELATION_TABLE = VALUES('Employee'[State])</p><p>`    `VAR __COUNT =</p><p>`    `COUNTX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsWithCurrManager])</p><p>`        `* [Emp_Departed]</p><p>`        `)</p><p>`    `)</p><p>`    `VAR __SUM_X =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsWithCurrManager]))</p><p>`    `)</p><p>`    `VAR __SUM_Y = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed])</p><p>`    `)</p><p>`    `VAR __SUM_XY =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsWithCurrManager])</p><p>`        `* [Emp_Departed] * 1.</p><p>`        `)</p><p>`    `)</p><p>`    `VAR __SUM_X2 =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[YearsWithCurrManager]) ^ 2)</p><p>`    `)</p><p>`    `VAR __SUM_Y2 = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed] ^ 2)</p><p>`    `)</p><p>`    `RETURN</p><p>`        `DIVIDE(</p><p>`            `__COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1.,</p><p>`            `SQRT((__COUNT * __SUM_X2 - __SUM_X ^ 2)</p><p>`            `* (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)</p><p>`            `)</p><p>`        `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">17</td><td colspan="1" rowspan="2" valign="top">Corr_Distance_Att</td><td colspan="1" valign="top">Calculate the correlation coefficient between attrition behavior and the (distance between work and employee's home)</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Corr_Distance_Att =</p><p>`    `VAR __CORRELATION_TABLE = VALUES('Employee'[State])</p><p>`    `VAR __COUNT =</p><p>`    `COUNTX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Distance From Home])</p><p>`        `* [Emp_Departed]</p><p>`        `)</p><p>`    `)</p><p>`    `VAR __SUM_X =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Distance From Home]))</p><p>`    `)</p><p>`    `VAR __SUM_Y = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed])</p><p>`    `)</p><p>`    `VAR __SUM_XY =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Distance From Home])</p><p>`        `* [Emp_Departed] * 1.</p><p>`        `)</p><p>`    `)</p><p>`    `VAR __SUM_X2 =</p><p>`    `SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE(AVERAGE('Employee'[Distance From Home]) ^ 2)</p><p>`    `)</p><p>`    `VAR __SUM_Y2 = SUMX(</p><p>`        `KEEPFILTERS(__CORRELATION_TABLE),</p><p>`        `CALCULATE([Emp_Departed] ^ 2)</p><p>`    `)</p><p>`    `RETURN</p><p>`        `DIVIDE(</p><p>`            `__COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1.,</p><p>`            `SQRT((__COUNT * __SUM_X2 - __SUM_X ^ 2)</p><p>`            `* (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)</p><p>`            `)</p><p>`        `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">18</td><td colspan="1" rowspan="2" valign="top">Avg_Salary_Departed</td><td colspan="1" valign="top">Calculate the average salary of departed employees</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Avg_Salary_Departed =</p><p>`    `CALCULATE(</p><p>`        `AVERAGE(Employee[Salary]),</p><p>`        `Employee[Attrition] = "Departed"</p><p>`    `)</p></td></tr>
+<tr><td colspan="1" rowspan="2" valign="top">19</td><td colspan="1" rowspan="2" valign="top">Avg_Salary_Active</td><td colspan="1" valign="top">Calculate the average salary of active employees</td></tr>
+<tr><td colspan="1" valign="top"><p>`    `Avg_Salary_Active =</p><p>`    `CALCULATE(</p><p>`        `AVERAGE(Employee[Salary]),</p><p>`        `Employee[Attrition] = "Active"</p><p>`    `)</p></td></tr>
+</table>
 
-Emp_Active = CALCULATE([Emp_Total], Employee[Attrition] = "active")
 
-Emp_Departed = COALESCE(CALCULATE([Emp_Total], Employee[Attrition] = "Departed"), 0)
-
-Emp_Hired = [Emp_Active] + [Emp_Departed]
-
-Attrition% = [Emp_Departed]/([Emp_Departed]+[Emp_Active])
-```
-### Satisfaction Metrics
-```dax
-Count_V_Satisfied = CALCULATE(COUNTROWS(Survey), Survey[Answer] = 5, Survey[Question ID] IN {1, 2, 3, 4})
-
-Count_V_Dissatisfied = CALCULATE(COUNTROWS(Survey), Survey[Answer] = 1, Survey[Question ID] IN {1, 2, 3, 4})
-
-Count_Satisfied = CALCULATE(COUNTROWS(Survey), Survey[Answer] = 4, Survey[Question ID] IN {1, 2, 3, 4})
-
-Count_Neutral = CALCULATE(COUNTROWS(Survey), Survey[Answer] = 3, Survey[Question ID] IN {1, 2, 3, 4})
-
-Count_Dissatisfied = CALCULATE(COUNTROWS(Survey), Survey[Answer] = 2, Survey[Question ID] IN {1, 2, 3, 4})
-```
-### Correlation Measures
-```dax
-Corr_Stock_Att = 
-VAR __CORRELATION_TABLE = VALUES('Employee'[State])
-VAR __COUNT = COUNTX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE(AVERAGE('Employee'[Stock Option Level]) * [Emp_Departed]))
-VAR __SUM_X = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE(AVERAGE('Employee'[Stock Option Level])))
-VAR __SUM_Y = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE([Emp_Departed]))
-VAR __SUM_XY = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE(AVERAGE('Employee'[Stock Option Level]) * [Emp_Departed] * 1.))
-VAR __SUM_X2 = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE(AVERAGE('Employee'[Stock Option Level]) ^ 2))
-VAR __SUM_Y2 = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE([Emp_Departed] ^ 2))
-RETURN DIVIDE(__COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1., SQRT((__COUNT * __SUM_X2 - __SUM_X ^ 2) * (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)))
-```
-### Salary Metrics
-```dax
-Avg_Salary_Departed = CALCULATE(AVERAGE(Employee[Salary]), Employee[Attrition] = "Departed")
-
-Avg_Salary_Active = CALCULATE(AVERAGE(Employee[Salary]), Employee[Attrition] = "Active")
-```
 **SQL codes**
 
 
