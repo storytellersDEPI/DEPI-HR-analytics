@@ -157,3 +157,30 @@ Dividing the table into 2 folders:
 (Personal) which includes all personal columns for each employee.
 
 (Professional) which includes all work columns for each employee.
+
+Table: Education Level
+Delete Table.
+
+## The Data Model
+
+### Schema
+![Image 12](media/image12.png)
+
+### Tables
+
+| Name                                   | Description                                                   | Expression                                      | IsHidden | IsPrivate |
+|----------------------------------------|---------------------------------------------------------------|------------------------------------------------|----------|-----------|
+| Employee                               | Table contains all the information about each employee in the company |                                                | FALSE    | FALSE     |
+| Survey                                 | Table contains all the surveys results of all the employees of all time |                                                | FALSE    | FALSE     |
+| Questions                              | Table to store and code the questions of the employees' surveys |                                                | FALSE    | FALSE     |
+| _Measures                              | Table to store and organize DAX measures                      |                                                | FALSE    | FALSE     |
+| _dim_Date                              | Time Table for the analysis period of time                    |                                                | FALSE    | FALSE     |
+| DateTableTemplate_4439d23f-be47-4c76-af94-b88c07a4e1c1 | Calendar(Date(2015,1,1), Date(2015,1,1))                      | TRUE                                           | TRUE     |
+| LocalDateTable_eb61007b-a943-48b9-a0bd-3a3586bec2b3 | Calendar(Date(Year(MIN('_dim_Date'[Date])), 1, 1), Date(Year(MAX('_dim_Date'[Date])), 12, 31)) | TRUE                                           | FALSE    |
+| LocalDateTable_ffda792a-e4e2-4437-b266-0a08d4d4f59a | Calendar(Date(Year(MIN('Survey'[Review Date])), 1, 1), Date(Year(MAX('Survey'[Review Date])), 12, 31)) | TRUE                                           | FALSE    |
+| Model_Columns                          | INFO.VIEW.COLUMNS()                                           |                                                | FALSE    | FALSE     |
+| Model_Measures                         | INFO.VIEW.MEASURES()                                          |                                                | FALSE    | FALSE     |
+| Model_Relationships                    | INFO.VIEW.RELATIONSHIPS()                                     |                                                | FALSE    | FALSE     |
+| Model_Tables                           | INFO.VIEW.TABLES()                                            |                                                | FALSE    | FALSE     |
+
+![Image 13](media/image13.png)
